@@ -67,17 +67,10 @@ var dataset= ee.ImageCollection("LANDSAT/LT05/C01/T1_SR")
 print('dataset', dataset);
 
 //Seleciona os componentes da coleção a serem unidos em uma única imagem
-var nbr = dataset.select('NBR'/*Jday*/).min();
+var nbr = dataset.select('NBR', 'Jday').min();
 print(nbr);
 Map.addLayer(nbr);
 // para cada valor mínimo de NBR, pegar o valor relativo de Jday
-
-//Unir
-//var multiband = img.toBands();
-//var band = multiband.toBands();
-//print(multiband);
-
-//Map.addLayer(multiband);
 
 // Export the image, specifying scale and region.
 Export.image.toDrive({
